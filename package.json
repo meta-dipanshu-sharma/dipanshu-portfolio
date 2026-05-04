@@ -1,0 +1,29 @@
+{
+  "name": "dipanshu-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Dipanshu Sharma — Senior Frontend Engineer Portfolio. A premium, 2026-era digital experience built with React, TypeScript, Vite, SCSS, and Framer Motion.",
+  "author": "Dipanshu Sharma <dipanshusharma2510@gmail.com>",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "framer-motion": "^11.11.17",
+    "lenis": "^1.1.20",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^25.6.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.3",
+    "sass": "^1.81.0",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.11"
+  }
+}

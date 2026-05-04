@@ -1,0 +1,144 @@
+// ============================================================
+// GLOBAL — reset, base typography, scroll behavior
+// ============================================================
+
+@use 'tokens' as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+
+  // Custom scrollbar — hairline, dev-tool feel
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+  &::-webkit-scrollbar-track {
+    background: $ink-050;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: $ink-300;
+    border: 3px solid $ink-050;
+    border-radius: $radius-pill;
+    &:hover { background: $ink-400; }
+  }
+}
+
+body {
+  font-family: $font-body;
+  font-size: $fs-base;
+  line-height: $lh-normal;
+  color: $ink-800;
+  background: $ink-050;
+  min-height: 100vh;
+  overflow-x: hidden;
+
+  // Subtle radial spotlight that anchors the viewport
+  background-image:
+    radial-gradient(
+      ellipse 80% 50% at 50% -10%,
+      rgba(212, 255, 74, 0.04),
+      transparent 60%
+    );
+  background-attachment: fixed;
+}
+
+// Custom selection
+::selection {
+  background: $accent-lime;
+  color: $ink-050;
+}
+
+// Focus-visible
+:focus-visible {
+  outline: 2px solid $accent-lime;
+  outline-offset: 3px;
+  border-radius: $radius-xs;
+}
+
+// Reset
+img, svg, video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul, ol { list-style: none; }
+
+input, textarea {
+  font: inherit;
+  color: inherit;
+}
+
+// Headings — editorial / display
+h1, h2, h3, h4, h5, h6 {
+  @include font-display;
+  font-weight: 400;
+  line-height: $lh-snug;
+  color: $ink-900;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+// Reduced motion
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+// Container utility
+.container {
+  width: 100%;
+  max-width: $container-max;
+  margin-inline: auto;
+  padding-inline: $space-5;
+
+  @include bp-up(md) { padding-inline: $space-7; }
+  @include bp-up(lg) { padding-inline: $space-8; }
+}
+
+.container--content {
+  max-width: $container-content;
+  margin-inline: auto;
+  padding-inline: $space-5;
+  @include bp-up(md) { padding-inline: $space-7; }
+}
+
+// Section base — generous vertical rhythm
+section {
+  position: relative;
+  padding-block: $space-10;
+  @include bp-down(md) { padding-block: $space-8; }
+}

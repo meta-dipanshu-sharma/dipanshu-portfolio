@@ -1,0 +1,292 @@
+.stack {
+  position: relative;
+
+  &__constellation-wrap {
+    position: relative;
+    margin: $space-8 auto;
+    max-width: 720px;
+  }
+
+  &__constellation {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    max-height: 560px;
+    margin: 0 auto;
+
+    @include bp-down(md) {
+      transform: scale(0.85);
+      transform-origin: center;
+    }
+  }
+
+  &__rings {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: $ink-150;
+    border: 1px solid $accent-lime;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include font-display;
+    font-style: italic;
+    font-size: $fs-lg;
+    color: $accent-lime;
+    box-shadow: $shadow-glow;
+    z-index: 5;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border-radius: 50%;
+      border: 1px solid $accent-lime;
+      opacity: 0.3;
+      animation: center-pulse 3s ease-in-out infinite;
+    }
+  }
+
+  // ── NODES ──────────────────────────────────────────────
+  &__node {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-2;
+    cursor: pointer;
+    transition: opacity $dur-fast, transform $dur-fast $ease-out-quart;
+    z-index: 3;
+
+    &--dim {
+      opacity: 0.18;
+    }
+
+    &--hover {
+      z-index: 6;
+
+      .stack__node-dot {
+        transform: scale(1.4);
+        box-shadow: 0 0 16px var(--node-color);
+      }
+
+      .stack__node-label {
+        opacity: 1;
+        background: $ink-200;
+        color: $ink-900;
+        border-color: var(--node-color);
+      }
+    }
+  }
+
+  &__node-dot {
+    width: var(--node-size);
+    height: var(--node-size);
+    border-radius: 50%;
+    background: var(--node-color);
+    border: 1px solid var(--node-color);
+    transition: transform $dur-fast $ease-spring, box-shadow $dur-fast;
+    box-shadow: 0 0 8px var(--node-color);
+  }
+
+  &__node-label {
+    @include font-mono;
+    font-size: 9px;
+    color: $ink-700;
+    padding: 2px 6px;
+    border: 1px solid $ink-300;
+    border-radius: $radius-xs;
+    background: $ink-100;
+    white-space: nowrap;
+    transition: all $dur-fast;
+    opacity: 0.85;
+    letter-spacing: $tracking-snug;
+  }
+
+  // ── FILTERS ────────────────────────────────────────────
+  &__filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-2;
+    justify-content: center;
+    margin-top: $space-6;
+  }
+
+  &__filter {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-2;
+    padding: $space-2 $space-3;
+    border: 1px solid $ink-300;
+    border-radius: $radius-pill;
+    background: $ink-100;
+    @include font-mono;
+    font-size: $fs-xxs;
+    color: $ink-700;
+    text-transform: uppercase;
+    letter-spacing: $tracking-wide;
+    transition: all $dur-fast;
+
+    &:hover {
+      border-color: $ink-400;
+      color: $ink-900;
+    }
+
+    &--active {
+      background: $ink-200;
+      border-color: $ink-500;
+      color: $ink-900;
+    }
+  }
+
+  &__filter-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--cat-color);
+    box-shadow: 0 0 6px var(--cat-color);
+  }
+
+  // ── DETAIL ─────────────────────────────────────────────
+  &__detail {
+    text-align: center;
+    margin-top: $space-5;
+    min-height: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-1;
+  }
+
+  &__detail-hint {
+    @include font-mono;
+    font-size: $fs-xs;
+    color: $ink-600;
+    letter-spacing: $tracking-snug;
+  }
+
+  &__detail-name {
+    @include font-display;
+    font-size: $fs-xl;
+    font-weight: 400;
+    color: $ink-900;
+  }
+
+  &__detail-meta {
+    @include font-mono;
+    font-size: $fs-xs;
+    color: $ink-700;
+    display: flex;
+    gap: $space-2;
+    text-transform: uppercase;
+    letter-spacing: $tracking-wide;
+  }
+
+  // ── CATEGORY GRID ──────────────────────────────────────
+  &__categories {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $space-4;
+    margin-top: $space-9;
+
+    @include bp-down(lg) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include bp-down(sm) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__category {
+    background: $ink-100;
+    border: 1px solid $ink-300;
+    border-radius: $radius-lg;
+    padding: $space-5;
+    border-top: 2px solid var(--cat-color);
+    transition: border-color $dur-base;
+
+    &:hover {
+      border-color: $ink-400;
+      border-top-color: var(--cat-color);
+    }
+  }
+
+  &__category-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: $space-2;
+  }
+
+  &__category-label {
+    @include font-display;
+    font-style: italic;
+    font-size: $fs-lg;
+    font-weight: 400;
+    color: var(--cat-color);
+  }
+
+  &__category-count {
+    @include font-mono;
+    font-size: $fs-xxs;
+    color: $ink-600;
+    padding: 2px 6px;
+    border: 1px solid $ink-300;
+    border-radius: $radius-xs;
+    letter-spacing: $tracking-wide;
+  }
+
+  &__category-desc {
+    font-size: $fs-xs;
+    color: $ink-600;
+    line-height: $lh-relaxed;
+    margin-bottom: $space-4;
+    min-height: 3em;
+  }
+
+  &__category-list {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: $space-1 0;
+      border-bottom: 1px dashed $ink-300;
+      font-size: $fs-sm;
+
+      &:last-child { border-bottom: none; }
+    }
+  }
+
+  &__category-skill {
+    color: $ink-800;
+  }
+
+  &__category-years {
+    @include font-mono;
+    font-size: $fs-xxs;
+    color: $ink-600;
+    letter-spacing: $tracking-wide;
+  }
+}
+
+@keyframes center-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(1.5); opacity: 0; }
+}

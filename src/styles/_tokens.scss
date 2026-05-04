@@ -1,0 +1,199 @@
+// ============================================================
+// DESIGN TOKENS — DIPANSHU SHARMA · 2026
+// A high-contrast, editorial, dev-tooling aesthetic.
+// Linear precision × Apple storytelling × Berlin modernism.
+// ============================================================
+
+// ── COLOR SYSTEM ────────────────────────────────────────────
+// Palette is built on near-black with warm, paper-bone neutrals
+// and a single, surprising lime accent for energy.
+
+$ink-000: #08080a;          // deepest void
+$ink-050: #0a0a0b;          // primary background
+$ink-100: #0e0e10;          // surface / card-rest
+$ink-150: #131316;          // raised surface
+$ink-200: #1a1a1d;          // hover / pressed
+$ink-300: #232328;          // border / divider
+$ink-400: #2e2e34;          // strong border
+$ink-500: #4a4a52;          // muted text
+$ink-600: #6c6c75;          // secondary text
+$ink-700: #9a9aa3;          // tertiary text
+$ink-800: #c8c8cf;          // primary-on-dark
+$ink-900: #e8e6e1;          // headline text (warm paper)
+$ink-950: #f5f3ee;          // pure paper / spotlight
+
+// Single accent — unexpected, sharp, energetic.
+// "Mantis" — a high-voltage lime that screams "shipped."
+$accent-lime: #d4ff4a;
+$accent-lime-soft: rgba(212, 255, 74, 0.12);
+$accent-lime-glow: rgba(212, 255, 74, 0.35);
+
+// Status / signal colors (used sparingly in dev mode)
+$signal-cyan: #5ee2f0;
+$signal-amber: #f5c84b;
+$signal-rose: #ff5e7a;
+
+// ── TYPOGRAPHY ──────────────────────────────────────────────
+$font-display: 'Fraunces', 'Times New Roman', serif;       // editorial display
+$font-body: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
+$font-mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+
+// Type scale — 1.25 modular, anchored at 16px
+$fs-xxs: 0.6875rem;   // 11px — micro labels
+$fs-xs:  0.75rem;     // 12px — captions
+$fs-sm:  0.8125rem;   // 13px — UI text
+$fs-base: 0.9375rem;  // 15px — body
+$fs-md:  1.0625rem;   // 17px — comfortable read
+$fs-lg:  1.25rem;     // 20px
+$fs-xl:  1.5rem;      // 24px
+$fs-2xl: 2rem;        // 32px
+$fs-3xl: 2.75rem;     // 44px
+$fs-4xl: 4rem;        // 64px
+$fs-5xl: 5.5rem;      // 88px
+$fs-6xl: 8rem;        // 128px — hero
+
+$lh-tight: 0.95;
+$lh-snug: 1.15;
+$lh-normal: 1.5;
+$lh-relaxed: 1.7;
+
+$tracking-tight: -0.04em;
+$tracking-snug: -0.02em;
+$tracking-normal: 0;
+$tracking-wide: 0.08em;
+$tracking-wider: 0.16em;
+
+// ── SPATIAL SYSTEM ──────────────────────────────────────────
+// 8-pt baseline grid
+$space-1: 0.25rem;    // 4
+$space-2: 0.5rem;     // 8
+$space-3: 0.75rem;    // 12
+$space-4: 1rem;       // 16
+$space-5: 1.5rem;     // 24
+$space-6: 2rem;       // 32
+$space-7: 3rem;       // 48
+$space-8: 4rem;       // 64
+$space-9: 6rem;       // 96
+$space-10: 8rem;      // 128
+$space-11: 12rem;     // 192
+
+// ── LAYOUT ──────────────────────────────────────────────────
+$container-max: 1440px;
+$container-content: 1200px;
+$container-narrow: 720px;
+$gutter: $space-5;
+
+// 12-column grid for dev mode overlay
+$grid-columns: 12;
+
+// ── RADII ───────────────────────────────────────────────────
+$radius-xs: 4px;
+$radius-sm: 6px;
+$radius-md: 10px;
+$radius-lg: 16px;
+$radius-xl: 24px;
+$radius-2xl: 32px;
+$radius-pill: 999px;
+
+// ── BORDERS ─────────────────────────────────────────────────
+$border-hairline: 1px solid $ink-300;
+$border-soft: 1px solid $ink-200;
+$border-strong: 1px solid $ink-400;
+
+// ── SHADOWS ─────────────────────────────────────────────────
+$shadow-xs: 0 1px 2px rgba(0,0,0,0.3);
+$shadow-sm: 0 2px 8px rgba(0,0,0,0.35);
+$shadow-md: 0 8px 24px rgba(0,0,0,0.4);
+$shadow-lg: 0 24px 60px rgba(0,0,0,0.5);
+$shadow-glow: 0 0 0 1px rgba(212, 255, 74, 0.3), 0 0 32px rgba(212, 255, 74, 0.15);
+
+// ── MOTION ──────────────────────────────────────────────────
+// Custom cubic-beziers tuned for editorial feel
+$ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+$ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+$ease-in-out-circ: cubic-bezier(0.85, 0, 0.15, 1);
+$ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+$dur-instant: 120ms;
+$dur-fast: 200ms;
+$dur-base: 360ms;
+$dur-slow: 600ms;
+$dur-slower: 900ms;
+
+// ── Z-INDEX ─────────────────────────────────────────────────
+$z-base: 1;
+$z-raised: 10;
+$z-sticky: 100;
+$z-overlay: 500;
+$z-modal: 1000;
+$z-dev-mode: 9999;
+
+// ── BREAKPOINTS ─────────────────────────────────────────────
+$bp-sm: 640px;
+$bp-md: 768px;
+$bp-lg: 1024px;
+$bp-xl: 1280px;
+$bp-2xl: 1536px;
+
+@mixin bp-up($size) {
+  @if $size == sm { @media (min-width: $bp-sm) { @content; } }
+  @else if $size == md { @media (min-width: $bp-md) { @content; } }
+  @else if $size == lg { @media (min-width: $bp-lg) { @content; } }
+  @else if $size == xl { @media (min-width: $bp-xl) { @content; } }
+  @else if $size == 2xl { @media (min-width: $bp-2xl) { @content; } }
+}
+
+@mixin bp-down($size) {
+  @if $size == sm { @media (max-width: ($bp-sm - 1px)) { @content; } }
+  @else if $size == md { @media (max-width: ($bp-md - 1px)) { @content; } }
+  @else if $size == lg { @media (max-width: ($bp-lg - 1px)) { @content; } }
+  @else if $size == xl { @media (max-width: ($bp-xl - 1px)) { @content; } }
+}
+
+// ── UTILITY MIXINS ──────────────────────────────────────────
+@mixin font-display {
+  font-family: $font-display;
+  font-feature-settings: 'ss01', 'ss02';
+  letter-spacing: $tracking-tight;
+}
+
+@mixin font-mono {
+  font-family: $font-mono;
+  font-feature-settings: 'ss01', 'ss02', 'cv01';
+}
+
+@mixin label-mono {
+  @include font-mono;
+  font-size: $fs-xxs;
+  text-transform: uppercase;
+  letter-spacing: $tracking-wider;
+  color: $ink-600;
+  font-weight: 500;
+}
+
+@mixin glass-surface($opacity: 0.5) {
+  background: rgba(14, 14, 16, $opacity);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+@mixin grain-texture($opacity: 0.04) {
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: $opacity;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+@mixin hairline-grid {
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 64px 64px;
+}

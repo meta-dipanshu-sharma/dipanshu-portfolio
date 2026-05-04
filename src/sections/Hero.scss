@@ -1,0 +1,501 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  padding-top: $space-11;
+  padding-bottom: $space-9;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+
+  @include bp-down(md) {
+    padding-top: $space-9;
+    padding-bottom: $space-7;
+    min-height: auto;
+  }
+
+  // ── ATMOSPHERIC BACKDROP ─────────────────────────────────
+  &__atmosphere {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  &__grid {
+    position: absolute;
+    inset: 0;
+    @include hairline-grid;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, black 30%, transparent 80%);
+  }
+
+  &__halo {
+    position: absolute;
+    top: -20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80vw;
+    height: 80vh;
+    background: radial-gradient(
+      ellipse 60% 50% at 50% 50%,
+      rgba(212, 255, 74, 0.08) 0%,
+      rgba(212, 255, 74, 0.02) 30%,
+      transparent 70%
+    );
+    filter: blur(60px);
+    animation: halo-drift 18s ease-in-out infinite alternate;
+  }
+
+  &__noise {
+    position: absolute;
+    inset: 0;
+    opacity: 0.04;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  &__inner {
+    position: relative;
+    z-index: 2;
+  }
+
+  // ── SPLIT LAYOUT ─────────────────────────────────────────
+  &__split {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-9;
+    align-items: center;
+
+    @include bp-up(lg) {
+      grid-template-columns: 1fr 340px;
+      gap: $space-9;
+    }
+
+    @include bp-up(xl) {
+      grid-template-columns: 1fr 380px;
+    }
+  }
+
+  &__content {
+    min-width: 0;
+  }
+
+  // ── PHOTO — circular ────────────────────────────────────
+  &__photo-wrap {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+    flex-shrink: 0;
+
+    @include bp-up(xl) {
+      width: 340px;
+      height: 340px;
+    }
+
+    @include bp-down(md) {
+      display: none;
+    }
+
+    // Lime glow ring behind the circle
+    &::before {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      background: conic-gradient(
+        $accent-lime 0deg,
+        rgba($accent-lime, 0.15) 120deg,
+        transparent 200deg,
+        rgba($accent-lime, 0.08) 300deg,
+        $accent-lime 360deg
+      );
+      animation: photo-ring-spin 12s linear infinite;
+      z-index: 0;
+    }
+
+    // 1px gap between ring and photo
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 2px;
+      border-radius: 50%;
+      background: $ink-050;
+      z-index: 1;
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    inset: 5px; // sits inside the ring gap
+    width: calc(100% - 10px);
+    height: calc(100% - 10px);
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center top;
+    z-index: 2;
+
+    // Desaturate slightly — editorial feel, not a headshot
+    filter: grayscale(15%) contrast(1.05) brightness(0.9);
+    transition: filter 0.6s ease;
+
+    // Vignette via radial mask — fades the edges into the dark bg
+    mask-image: radial-gradient(
+      circle at 50% 50%,
+      black 55%,
+      rgba(0, 0, 0, 0.95) 65%,
+      rgba(0, 0, 0, 0.6) 78%,
+      transparent 100%
+    );
+    -webkit-mask-image: radial-gradient(
+      circle at 50% 50%,
+      black 55%,
+      rgba(0, 0, 0, 0.95) 65%,
+      rgba(0, 0, 0, 0.6) 78%,
+      transparent 100%
+    );
+
+    .hero__photo-wrap:hover & {
+      filter: grayscale(0%) contrast(1.02) brightness(0.95);
+    }
+  }
+
+  // ── STATUS PILL ──────────────────────────────────────────
+  &__status {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-2;
+    padding: $space-2 $space-4;
+    background: $ink-100;
+    border: 1px solid $ink-300;
+    border-radius: $radius-pill;
+    margin-bottom: $space-7;
+    font-size: $fs-xs;
+    color: $ink-700;
+  }
+
+  &__status-led {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: $accent-lime;
+    box-shadow: 0 0 8px $accent-lime-glow;
+    animation: led-pulse 2s ease-in-out infinite;
+  }
+
+  &__status-mono {
+    @include font-mono;
+    font-size: $fs-xxs;
+    color: $accent-lime;
+    letter-spacing: $tracking-wide;
+    margin-right: $space-1;
+  }
+
+  // ── NAME INTRO ───────────────────────────────────────────
+  &__intro {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: $space-5;
+  }
+
+  &__intro-hi {
+    @include font-mono;
+    font-size: $fs-md;
+    color: $ink-600;
+    letter-spacing: $tracking-wide;
+    text-transform: lowercase;
+  }
+
+  &__intro-name {
+    @include font-display;
+    font-size: clamp(2rem, 6vw, 4rem);
+    font-weight: 500;
+    letter-spacing: $tracking-tight;
+    color: $ink-950;
+    line-height: 1;
+    margin-bottom: $space-3;
+
+    // Subtle lime underline — a visual bridge to the headline below
+    position: relative;
+    display: inline-block;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(
+        to right,
+        $accent-lime 0%,
+        rgba($accent-lime, 0.2) 60%,
+        transparent 100%
+      );
+      border-radius: $radius-pill;
+    }
+
+    @include bp-down(md) {
+      font-size: clamp(1.8rem, 8vw, 3rem);
+    }
+  }
+
+  // ── HEADLINE ─────────────────────────────────────────────
+  &__title {
+    @include font-display;
+    font-weight: 300;
+    line-height: $lh-tight;
+    letter-spacing: $tracking-tight;
+    font-size: clamp(2.5rem, 9vw, $fs-6xl);
+    color: $ink-900;
+    margin-bottom: $space-5;
+    text-wrap: balance;
+
+    @include bp-down(md) {
+      font-size: clamp(2.5rem, 11vw, 4.5rem);
+    }
+  }
+
+  &__title-line {
+    display: block;
+    overflow: hidden;
+  }
+
+  &__title-word {
+    display: inline-block;
+
+    &--italic {
+      @include font-display;
+      font-style: italic;
+      font-weight: 300;
+      color: $ink-700;
+    }
+
+    &--accent {
+      @include font-display;
+      font-style: italic;
+      color: $accent-lime;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0.08em;
+        height: 0.08em;
+        background: $accent-lime;
+        opacity: 0.3;
+        border-radius: $radius-pill;
+      }
+    }
+  }
+
+  &__title-cursor {
+    display: inline-block;
+    color: $accent-lime;
+    margin-left: 0.05em;
+    animation: cursor-blink 1.2s steps(2) infinite;
+    font-weight: 100;
+  }
+
+  // ── LEDE ─────────────────────────────────────────────────
+  &__lede {
+    max-width: 56ch;
+    font-size: clamp($fs-md, 2vw, $fs-lg);
+    line-height: $lh-relaxed;
+    color: $ink-700;
+    margin-bottom: $space-7;
+
+    strong {
+      color: $ink-900;
+      font-weight: 500;
+    }
+
+    em {
+      @include font-display;
+      font-style: italic;
+      color: $ink-900;
+      font-weight: 400;
+    }
+  }
+
+  // ── ACTIONS ──────────────────────────────────────────────
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-3;
+    margin-bottom: $space-9;
+  }
+
+  // ── MANIFESTO ────────────────────────────────────────────
+  &__manifesto {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+    border-top: 1px solid $ink-300;
+    padding-top: $space-5;
+    max-width: 480px;
+  }
+
+  &__manifesto-item {
+    display: flex;
+    align-items: baseline;
+    gap: $space-3;
+    font-size: $fs-sm;
+    color: $ink-800;
+
+    @include font-display;
+    font-style: italic;
+    font-weight: 300;
+    font-size: $fs-md;
+  }
+
+  &__manifesto-num {
+    @include font-mono;
+    font-style: normal;
+    font-size: $fs-xxs;
+    color: $accent-lime;
+    letter-spacing: $tracking-wide;
+    flex-shrink: 0;
+  }
+
+  // ── SCROLL AFFORDANCE ────────────────────────────────────
+  &__scroll {
+    position: absolute;
+    bottom: $space-5;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-3;
+
+    @include bp-down(md) { display: none; }
+  }
+
+  &__scroll-text {
+    @include font-mono;
+    font-size: $fs-xxs;
+    letter-spacing: $tracking-wider;
+    color: $ink-600;
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+  }
+
+  &__scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, $ink-400, transparent);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 12px;
+      background: $accent-lime;
+      animation: scroll-trickle 2s ease-in-out infinite;
+    }
+  }
+
+  // ── SIDEBAR ──────────────────────────────────────────────
+  &__sidebar {
+    position: absolute;
+    top: $space-11;
+    right: $space-7;
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+    gap: $space-1;
+    border-left: 1px solid $ink-300;
+    padding-left: $space-4;
+
+    @include bp-down(xl) { display: none; }
+  }
+
+  &__sidebar-row {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: $space-2 0;
+    border-bottom: 1px dashed $ink-300;
+
+    &--highlight .hero__sidebar-value {
+      color: $accent-lime;
+    }
+  }
+
+  &__sidebar-label {
+    @include label-mono;
+    font-size: 9px;
+  }
+
+  &__sidebar-value {
+    font-size: $fs-xs;
+    color: $ink-800;
+    font-weight: 500;
+  }
+}
+
+// ── BUTTONS (shared base) ──────────────────────────────────
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  padding: $space-3 $space-5;
+  border-radius: $radius-pill;
+  font-size: $fs-sm;
+  font-weight: 500;
+  border: 1px solid;
+  transition: all $dur-fast $ease-out-quart;
+  cursor: pointer;
+  text-decoration: none;
+
+  &--primary {
+    background: $accent-lime;
+    color: $ink-050;
+    border-color: $accent-lime;
+
+    &:hover {
+      background: $ink-950;
+      transform: translateY(-1px);
+      box-shadow: $shadow-glow;
+    }
+  }
+
+  &--ghost {
+    background: transparent;
+    color: $ink-900;
+    border-color: $ink-400;
+
+    &:hover {
+      background: $ink-150;
+      border-color: $ink-500;
+    }
+  }
+}
+
+// ── ANIMATIONS ─────────────────────────────────────────────
+@keyframes halo-drift {
+  0% { transform: translateX(-55%) scale(1); }
+  100% { transform: translateX(-45%) scale(1.1); }
+}
+
+@keyframes cursor-blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+@keyframes scroll-trickle {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(400%); }
+}
+
+@keyframes photo-ring-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}

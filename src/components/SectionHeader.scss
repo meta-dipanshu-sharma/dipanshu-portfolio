@@ -1,0 +1,51 @@
+.section-header {
+  margin-bottom: $space-8;
+  max-width: 880px;
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    margin-bottom: $space-5;
+  }
+
+  &__index {
+    @include font-mono;
+    font-size: $fs-xs;
+    color: $accent-lime;
+    font-weight: 500;
+  }
+
+  &__divider {
+    width: 32px;
+    height: 1px;
+    background: $ink-400;
+  }
+
+  &__label {
+    @include label-mono;
+  }
+
+  &__title {
+    @include font-display;
+    font-size: clamp(2rem, 5vw, $fs-3xl);
+    font-weight: 300;
+    line-height: $lh-snug;
+    color: $ink-900;
+    letter-spacing: $tracking-tight;
+    margin-bottom: $space-4;
+
+    em {
+      font-style: italic;
+      color: $ink-700;
+      font-weight: 300;
+    }
+  }
+
+  &__description {
+    font-size: $fs-md;
+    line-height: $lh-relaxed;
+    color: $ink-700;
+    max-width: 60ch;
+  }
+}
