@@ -6,6 +6,7 @@ import { Hero } from '@sections/Hero';
 import { Experience } from '@sections/Experience';
 import { Stack } from '@sections/Stack';
 import { Contact } from '@sections/Contact';
+import { ChatBot } from '@components/ChatBot';
 import { useSmoothScroll } from '@hooks/useSmoothScroll';
 
 function AppShell() {
@@ -23,6 +24,7 @@ function AppShell() {
       </main>
       <Footer />
       <DevConsole />
+      <ChatBot />
     </>
   );
 }
