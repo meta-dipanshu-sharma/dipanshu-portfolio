@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { KNOWLEDGE_BASE } from '../src/data/knowledge';
+import { KNOWLEDGE_BASE } from './knowledge';
 
 const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions';
 
