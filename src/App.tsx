@@ -8,12 +8,22 @@ import { Stack } from '@sections/Stack';
 import { Contact } from '@sections/Contact';
 import { ChatBot } from '@components/ChatBot';
 import { useSmoothScroll } from '@hooks/useSmoothScroll';
-import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
+import { useEffect, useRef } from 'react';
+import { useTrackPageView } from './hooks/useApi';
 
 function AppShell() {
+  const tracked = useRef(false);
+
+  const { mutate: trackPage } = useTrackPageView();
   // Lenis-powered smooth scroll (no-op for reduced-motion users).
   useSmoothScroll();
+
+  useEffect(() => {
+    if (tracked.current) return;
+    tracked.current = true;
+    trackPage(window.location.pathname);
+  }, []);
 
   return (
     <>
@@ -27,7 +37,6 @@ function AppShell() {
       <Footer />
       <DevConsole />
       <ChatBot />
-      <Analytics />
       <SpeedInsights />
     </>
   );
