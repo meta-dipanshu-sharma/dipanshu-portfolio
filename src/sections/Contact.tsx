@@ -3,11 +3,14 @@ import { SectionHeader } from '@components/SectionHeader';
 import { useScrollSection } from '@hooks/useScrollSection';
 import { profile, education } from '@data/portfolio';
 import './Contact.scss';
+import { useResumeDownload } from '@/hooks/useApi';
+import { ContactForm } from '@/components/ContactForm';
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 export function Contact() {
   const ref = useScrollSection<HTMLElement>('contact');
+  const { mutate: download, isPending } = useResumeDownload();
 
   const channels = [
     {
@@ -55,7 +58,7 @@ export function Contact() {
           className="contact__lead"
           initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-15% 0px" }}
+          viewport={{ once: true, margin: '-15% 0px' }}
           transition={{ duration: 0.8, ease: EASE }}
         >
           <div className="contact__lead-inner">
@@ -67,28 +70,19 @@ export function Contact() {
             <p className="contact__sub">
               I'm most useful where there's <strong>real scale</strong>, a need
               for
-              <strong> design intuition</strong>, and an appetite for{" "}
+              <strong> design intuition</strong>, and an appetite for{' '}
               <strong>AI as a force multiplier</strong>. If that's the shape of
               the problem you're solving, let's talk.
             </p>
-            <a className="contact__primary" href={`mailto:${profile.email}`}>
-              <span>Start a conversation</span>
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 16 16"
-                fill="none"
-                aria-hidden
-              >
-                <path
-                  d="M3 8h10M9 4l4 4-4 4"
-                  stroke="currentColor"
-                  strokeWidth="1.6"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </a>
+            <motion.div
+              className="contact__form-wrap"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-10% 0px' }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <ContactForm />
+            </motion.div>
           </div>
 
           <div className="contact__lead-aside" aria-hidden>
@@ -120,19 +114,19 @@ export function Contact() {
               key={c.key}
               href={c.href}
               target={
-                c.key === "linkedin" || c.key === "github"
-                  ? "_blank"
+                c.key === 'linkedin' || c.key === 'github'
+                  ? '_blank'
                   : undefined
               }
               rel={
-                c.key === "linkedin" || c.key === "github"
-                  ? "noopener noreferrer"
+                c.key === 'linkedin' || c.key === 'github'
+                  ? 'noopener noreferrer'
                   : undefined
               }
               className="contact__channel"
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-10% 0px" }}
+              viewport={{ once: true, margin: '-10% 0px' }}
               transition={{ duration: 0.6, delay: i * 0.05, ease: EASE }}
               whileHover={{ y: -2 }}
             >
@@ -159,7 +153,7 @@ export function Contact() {
           className="contact__resume"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-10% 0px" }}
+          viewport={{ once: true, margin: '-10% 0px' }}
           transition={{ duration: 0.7, ease: EASE }}
         >
           <div className="contact__resume-left">
@@ -186,10 +180,10 @@ export function Contact() {
               </span>
             </div>
           </div>
-          <a
+          <button
             className="contact__resume-btn"
-            href="/dipanshu-sharma-resume.pdf"
-            download="Dipanshu_Sharma_Resume.pdf"
+            onClick={() => download()}
+            disabled={isPending}
             aria-label="Download Dipanshu Sharma's resume as PDF"
           >
             <svg
@@ -199,16 +193,38 @@ export function Contact() {
               fill="none"
               aria-hidden
             >
-              <path
-                d="M7.5 2v8M4 7l3.5 3.5L11 7M2.5 13h10"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
+              {isPending ? (
+                <circle
+                  cx="7.5"
+                  cy="7.5"
+                  r="5"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeDasharray="20"
+                  strokeDashoffset="10"
+                  strokeLinecap="round"
+                >
+                  <animateTransform
+                    attributeName="transform"
+                    type="rotate"
+                    from="0 7.5 7.5"
+                    to="360 7.5 7.5"
+                    dur="0.8s"
+                    repeatCount="indefinite"
+                  />
+                </circle>
+              ) : (
+                <path
+                  d="M7.5 2v8M4 7l3.5 3.5L11 7M2.5 13h10"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              )}
             </svg>
-            <span>Download PDF</span>
-          </a>
+            <span>{isPending ? 'Preparing...' : 'Download PDF'}</span>
+          </button>
         </motion.div>
 
         {/* Education + footer block */}
@@ -217,7 +233,7 @@ export function Contact() {
             className="contact__education"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-10% 0px" }}
+            viewport={{ once: true, margin: '-10% 0px' }}
             transition={{ duration: 0.7, ease: EASE }}
           >
             <div className="contact__appendix-head">

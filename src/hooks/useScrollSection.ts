@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { useTrackEvent } from '@hooks/useApi';
 import { useDevMode } from '@/context/DevModeContext';
 
 /**
@@ -14,6 +15,7 @@ import { useDevMode } from '@/context/DevModeContext';
 export function useScrollSection<T extends HTMLElement>(id: string) {
   const ref = useRef<T | null>(null);
   const { setActiveSection } = useDevMode();
+  const { mutate: trackEvent } = useTrackEvent();
 
   // Capture the latest setter into a ref so the effect deps stay constant.
   const setActiveSectionRef = useRef(setActiveSection);
@@ -30,6 +32,7 @@ export function useScrollSection<T extends HTMLElement>(id: string) {
         for (const entry of entries) {
           if (entry.isIntersecting) {
             setActiveSectionRef.current(id);
+            trackEvent({ eventType: 'section_view', payload: { section: id } });
           }
         }
       },
@@ -40,7 +43,7 @@ export function useScrollSection<T extends HTMLElement>(id: string) {
         // Together they shrink the "root" to a thin horizontal strip.
         rootMargin: '-30% 0px -70% 0px',
         threshold: 0,
-      }
+      },
     );
     observer.observe(el);
     return () => observer.disconnect();
