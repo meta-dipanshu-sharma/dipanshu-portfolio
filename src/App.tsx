@@ -9,6 +9,7 @@ import { Contact } from '@sections/Contact';
 import { ChatBot } from '@components/ChatBot';
 import { useSmoothScroll } from '@hooks/useSmoothScroll';
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 function AppShell() {
   // Lenis-powered smooth scroll (no-op for reduced-motion users).
@@ -27,6 +28,7 @@ function AppShell() {
       <DevConsole />
       <ChatBot />
       <Analytics />
+      <SpeedInsights />
     </>
   );
 }
