@@ -46,19 +46,19 @@ No CSS framework. No UI library. No template starter. Hand-built.
 
 ```bash
 # install
-pnpm install        # or: npm install / yarn
+npm install
 
 # dev (opens at http://localhost:5173)
-pnpm dev
+npm dev
 
 # type-check
-pnpm type-check
+npm type-check
 
 # production build
-pnpm build
+npm build
 
 # preview the production bundle
-pnpm preview
+npm preview
 ```
 
 > Requires Node ≥ 18.

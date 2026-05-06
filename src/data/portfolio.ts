@@ -55,7 +55,8 @@ export const skills: Skill[] = [
   { name: 'JavaScript', category: 'core', level: 'expert', years: 7 },
   { name: 'React', category: 'frontend', level: 'expert', years: 7 },
   { name: 'Vue', category: 'frontend', level: 'expert', years: 3 },
-  { name: 'Redux', category: 'frontend', level: 'advanced', years: 7 },
+  { name: 'Single SPA', category: 'frontend', level: 'advanced', years: 3 },
+  { name: 'Redux', category: 'frontend', level: 'expert', years: 7 },
   { name: 'Microfrontends', category: 'frontend', level: 'advanced', years: 4 },
   // Backend
   { name: 'Node.js', category: 'backend', level: 'expert', years: 7 },
@@ -71,8 +72,11 @@ export const skills: Skill[] = [
   { name: 'Vite', category: 'tooling', level: 'expert', years: 3 },
   { name: 'Webpack', category: 'tooling', level: 'expert', years: 7 },
   { name: 'Jest', category: 'tooling', level: 'expert', years: 7 },
+  { name: 'Vitest', category: 'tooling', level: 'expert', years: 3 },
+  { name: 'Datadog', category: 'tooling', level: 'advanced', years: 3 },
   { name: 'Cypress', category: 'tooling', level: 'advanced', years: 4 },
   { name: 'GitHub Actions', category: 'tooling', level: 'advanced', years: 7 },
+  { name: 'Figma', category: 'tooling', level: 'advanced', years: 4 },
   // AI
   { name: 'Langdock API', category: 'ai', level: 'proficient', years: 1 },
   { name: 'Copilot', category: 'ai', level: 'expert', years: 2 },

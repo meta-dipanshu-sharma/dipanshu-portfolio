@@ -11,9 +11,10 @@ const KNOWLEDGE_BASE = `
 - GitHub: https://github.com/meta-dipanshu-sharma
 - Phone: +49 151 23382340
 - Years of experience: 7+
-- Currently open to: Senior Frontend, Full Stack, Staff Engineer, and Platform roles
-- Preferred work: Remote or Berlin-based
+- Currently open to: Mid/Senior Frontend, Full Stack, and Staff Engineer roles
+- Preferred work: Berlin or anywhere in Germany
 - Available: Yes, actively looking as of Q2 2026
+- Notice period: 1 month notice period
 
 ## Current Role
 - Company: Kaufland e-commerce, Berlin
@@ -23,10 +24,10 @@ const KNOWLEDGE_BASE = `
 - Key achievement: Led Vue 2 → Vue 3 migration across 25+ components, reducing bundle size by ~15%
 - Built a TypeScript + GraphQL BFF layer orchestrating data across 6+ backend microservices
 - Delivered Returnless Refunds, Return Label Reselling, and OOH delivery with location-based filtering
-- Impact: 22% adoption increase in first month, lowered seller logistics costs
+- Impact: 22% adoption increase in first month for OOH feature, lowered seller logistics costs
 - Implemented WCAG accessibility standards covering 90%+ of key user flows
 - Introduced Jest unit testing reaching ~85% coverage on critical UI modules
-- Tech used: Vue 3, TypeScript, GraphQL, Jest, GA4, GTM, Optimizely, Lokalise
+- Tech used: Vue 3, TypeScript, GraphQL, Jest, Datadog, GA4, GTM, Optimizely, Lokalise
 
 ## Previous Role — Cisco Webex
 - Company: Cisco Webex, Bengaluru, India
@@ -60,14 +61,14 @@ const KNOWLEDGE_BASE = `
 
 ## Core Technical Skills
 - Languages: TypeScript, JavaScript
-- Frontend: React, Vue 3, Next.js, Redux, Vite, Webpack, Microfrontends
+- Frontend: React, Vue.js, Redux, Vite, Webpack, Microfrontends
 - Backend: Node.js, NestJS, Express, GraphQL
 - Databases: MongoDB, MySQL, Elasticsearch
 - Cloud: AWS (Lambda, S3, EC2, CloudWatch, SQS, IAM, API Gateway)
-- Testing: Jest, Cypress
+- Testing: Jest, Cypress, Vitest
 - DevOps: CI/CD, GitHub Actions, Git, GitLab
-- Tools: Storybook, Postman, Optimizely, Lokalise, Mopinion
-- AI: Langdock API integration, AI agent workflows
+- Tools: Storybook, Postman, Optimizely, Lokalise, Mopinion, Figma
+- AI: Langdock API integration, AI agent workflows, Claude Code, Copilot
 - Other: WebRTC, WCAG accessibility, Agile/Scrum
 
 ## Education
@@ -78,7 +79,6 @@ const KNOWLEDGE_BASE = `
 - Senior Frontend Engineer
 - Full Stack Engineer
 - Staff Engineer
-- Platform Engineer
 - Open to: product companies, scale-ups, and engineering-led startups
 - Sectors I enjoy: developer tools, e-commerce, SaaS, healthtech, fintech
 - Not interested in: pure agency work, short-term contracts under 6 months
@@ -93,13 +93,13 @@ const KNOWLEDGE_BASE = `
 
 ## Pre-answered FAQ
 Q: Are you open to relocation?
-A: I am already based in Berlin, Germany. I am open to in-person roles in Berlin and remote roles within the EU timezone.
+A: I am already based in Berlin, Germany. I am open to in-person roles both in Berlin and other parts of Germany.
 
 Q: What is your notice period?
-A: Available immediately or within short notice — reach out to discuss.
+A: Available with 1 month notice period — reach out to discuss.
 
 Q: Do you have experience with AI?
-A: Yes — I have integrated Langdock APIs to build AI agent workflows that automate internal delivery and documentation tasks. I use AI as a force multiplier in day-to-day engineering.
+A: Yes — I have integrated Langdock APIs to build AI agent workflows that automate internal delivery and documentation tasks. I use AI as a force multiplier in day-to-day engineering using Claude Code and copilot.
 
 Q: What is your biggest technical achievement?
 A: At Cisco, contributing to a JavaScript SDK that handled 2.5 million monthly meeting joins across telehealth, edtech, and airline platforms. At Kaufland, leading a Vue 2 to Vue 3 migration across 25+ components while simultaneously shipping high-impact features that drove a 22% adoption increase.
