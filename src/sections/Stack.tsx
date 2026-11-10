@@ -22,9 +22,9 @@ const categoryMeta: Record<SkillCategory, { label: string; color: string; descri
   core: { label: 'Core', color: '#d4ff4a', description: 'The trunk of the T — daily-use languages.' },
   frontend: { label: 'Frontend', color: '#d4ff4a', description: 'Frameworks I architect production systems with.' },
   backend: { label: 'Backend', color: '#5ee2f0', description: 'Services and data layers I build and own.' },
-  cloud: { label: 'Cloud', color: '#f5c84b', description: 'Infrastructure for serverless and event-driven systems.' },
+  cloud: { label: 'Cloud', color: '#f5c84b', description: 'Infrastructure, event-driven systems and observability.' },
   tooling: { label: 'Tooling', color: '#c8c8cf', description: 'CI/CD, testing, build tooling.' },
-  ai: { label: 'AI', color: '#ff7a3d', description: 'Agent integration and AI-augmented delivery.' },
+  ai: { label: 'AI', color: '#ff7a3d', description: 'AI-augmented delivery and custom Claude Code skills.' },
 };
 
 export function Stack() {

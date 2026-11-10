@@ -57,7 +57,7 @@ export function useResumeDownload() {
     onError: (err) => {
       console.error('Resume download failed:', err);
       // Fallback — open the PDF directly from the frontend public folder
-      window.open('/DipanshuSharmaResume.pdf', '_blank');
+      window.open('/DipanshuSharmaResume.pdf', '_blank'); // keep in sync with public/ and RESUME_URL
     },
   });
 }

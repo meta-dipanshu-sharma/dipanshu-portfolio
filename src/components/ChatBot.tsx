@@ -12,7 +12,7 @@ const SUGGESTED_QUESTIONS = [
   'What stack do you work with?',
   'Are you open to remote roles?',
   'What did you build at Cisco?',
-  'What is your notice period?',
+  'What did you build at Kaufland?',
 ];
 
 const EASE = [0.16, 1, 0.3, 1] as const;

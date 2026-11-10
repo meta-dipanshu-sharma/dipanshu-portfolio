@@ -88,7 +88,7 @@ export function Contact() {
           <div className="contact__lead-aside" aria-hidden>
             <div className="contact__signal">
               <span className="contact__led" />
-              <span>Available · 01.06.2026 or 1 month Notice period</span>
+              <span>Available · Open to new roles</span>
             </div>
             <div className="contact__locale">
               <span className="contact__locale-row">

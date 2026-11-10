@@ -14,8 +14,8 @@ export function Experience() {
         <SectionHeader
           index="02"
           label="Career arc"
-          title="7+ years of engineering growth, from early MERN stack web apps to complex enterprise ecosystems."
-          description="My experience has been a steady build—mastering full-stack delivery, diving into the intricacies of real-time SDKs, and ultimately scaling high-traffic surfaces at a marketplace level."
+          title="8+ years of engineering growth, from early MERN stack web apps to complex enterprise ecosystems."
+          description="My experience has been a steady build—mastering full-stack delivery, diving into the intricacies of real-time SDKs, and ultimately owning checkout and payments for a marketplace across 9 European markets."
         />
 
         <ol className="experience__timeline">

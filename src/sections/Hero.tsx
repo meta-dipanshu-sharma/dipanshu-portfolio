@@ -46,7 +46,7 @@ export function Hero() {
               <span className="hero__status-led" aria-hidden />
               <span className="hero__status-text">
                 <span className="hero__status-mono">AVAILABLE</span> — Full
-                Stack & Frontend Developer · Mid/Senior · Berlin / Germany
+                Stack Engineer · Senior · Berlin / Germany
               </span>
             </motion.div>
 
@@ -108,7 +108,7 @@ export function Hero() {
               {profile.subtitle} with{" "}
               <strong>{profile.yearsExperience}+ years</strong> shipping
               enterprise-scale collaboration tools at <em>Cisco Webex</em>,
-              high-traffic e-commerce surfaces at <em>Kaufland</em>, and robust,
+              checkout and payment systems at <em>Kaufland</em>, and robust,
               end-to-end web products for global clients.
             </motion.p>
 
