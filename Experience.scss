@@ -1,0 +1,275 @@
+.experience {
+  position: relative;
+
+  &__timeline {
+    display: flex;
+    flex-direction: column;
+    gap: $space-8;
+
+    @include bp-down(md) {
+      gap: $space-7;
+    }
+  }
+
+  &__item {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: $space-5;
+    position: relative;
+
+    @include bp-down(md) {
+      grid-template-columns: 32px 1fr;
+      gap: $space-4;
+    }
+
+    &--current {
+      .experience__company { color: $accent-lime; }
+    }
+  }
+
+  // ── SPINE / TIMELINE NODE ───────────────────────────────
+  &__spine {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: $space-4;
+  }
+
+  &__node {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: $ink-200;
+    border: 2px solid $ink-400;
+    position: relative;
+    z-index: 2;
+    flex-shrink: 0;
+
+    &--kaufland {
+      background: $accent-lime;
+      border-color: $accent-lime;
+      box-shadow: 0 0 16px $accent-lime-glow;
+    }
+
+    &--cisco {
+      background: $signal-cyan;
+      border-color: $signal-cyan;
+    }
+
+    &--coditas {
+      background: $signal-amber;
+      border-color: $signal-amber;
+    }
+
+    &--metacube {
+      background: $signal-rose;
+      border-color: $signal-rose;
+    }
+  }
+
+  &__node-pulse {
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    border: 2px solid $accent-lime;
+    animation: node-pulse 2.4s ease-out infinite;
+  }
+
+  &__line {
+    flex: 1;
+    width: 1px;
+    background: linear-gradient(to bottom, $ink-400 0%, $ink-300 50%, transparent 100%);
+    margin-top: $space-3;
+    min-height: 60px;
+  }
+
+  // ── CONTENT ─────────────────────────────────────────────
+  &__content {
+    background: $ink-100;
+    border: 1px solid $ink-300;
+    border-radius: $radius-xl;
+    padding: $space-6;
+    transition: border-color $dur-base;
+
+    @include bp-up(md) {
+      padding: $space-7;
+    }
+
+    &:hover {
+      border-color: $ink-400;
+    }
+  }
+
+  &__head {
+    display: flex;
+    flex-direction: column;
+    gap: $space-1;
+    margin-bottom: $space-5;
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    margin-bottom: $space-2;
+  }
+
+  &__period {
+    @include label-mono;
+    font-size: $fs-xs;
+    color: $ink-700;
+  }
+
+  &__current-tag {
+    @include font-mono;
+    font-size: 9px;
+    padding: 2px 6px;
+    background: $accent-lime-soft;
+    color: $accent-lime;
+    border: 1px solid $accent-lime;
+    border-radius: $radius-xs;
+    letter-spacing: $tracking-wider;
+    font-weight: 600;
+  }
+
+  &__company {
+    @include font-display;
+    font-size: clamp($fs-xl, 3vw, $fs-2xl);
+    font-weight: 400;
+    color: $ink-900;
+    letter-spacing: $tracking-tight;
+    line-height: $lh-snug;
+  }
+
+  &__role {
+    font-size: $fs-base;
+    color: $ink-700;
+    margin-top: $space-1;
+
+    em {
+      @include font-display;
+      font-style: italic;
+      color: $ink-600;
+      font-weight: 300;
+    }
+  }
+
+  &__tagline {
+    @include font-display;
+    font-style: italic;
+    font-size: $fs-md;
+    color: $ink-800;
+    margin-top: $space-3;
+    font-weight: 300;
+    line-height: $lh-relaxed;
+    max-width: 60ch;
+  }
+
+  &__domain {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-2;
+    padding: $space-2 $space-3;
+    background: $ink-150;
+    border: 1px solid $ink-300;
+    border-radius: $radius-sm;
+    margin-bottom: $space-5;
+  }
+
+  &__domain-label {
+    @include label-mono;
+    font-size: 9px;
+    color: $ink-600;
+  }
+
+  &__domain-value {
+    @include font-mono;
+    font-size: $fs-xxs;
+    color: $ink-900;
+    letter-spacing: $tracking-snug;
+  }
+
+  // ── ACHIEVEMENTS ────────────────────────────────────────
+  &__achievements {
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+    margin-bottom: $space-5;
+  }
+
+  &__achievement {
+    display: flex;
+    gap: $space-3;
+    font-size: $fs-sm;
+    line-height: $lh-relaxed;
+    color: $ink-700;
+    max-width: 75ch;
+  }
+
+  &__achievement-marker {
+    color: $accent-lime;
+    flex-shrink: 0;
+    font-weight: 500;
+  }
+
+  // ── METRICS ─────────────────────────────────────────────
+  &__metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: $ink-300;
+    border: 1px solid $ink-300;
+    border-radius: $radius-md;
+    overflow: hidden;
+    margin-bottom: $space-5;
+
+    @include bp-down(md) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &__metric {
+    background: $ink-150;
+    padding: $space-3 $space-4;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  &__metric-value {
+    @include font-display;
+    font-size: $fs-lg;
+    font-weight: 400;
+    color: $ink-900;
+    letter-spacing: $tracking-tight;
+  }
+
+  &__metric-label {
+    @include label-mono;
+    font-size: 9px;
+    color: $ink-600;
+  }
+
+  // ── STACK ───────────────────────────────────────────────
+  &__stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-2;
+
+    li {
+      @include font-mono;
+      font-size: $fs-xxs;
+      padding: 4px 10px;
+      background: transparent;
+      border: 1px solid $ink-300;
+      border-radius: $radius-pill;
+      color: $ink-700;
+    }
+  }
+}
+
+@keyframes node-pulse {
+  0% { opacity: 1; transform: scale(0.8); }
+  100% { opacity: 0; transform: scale(2.2); }
+}

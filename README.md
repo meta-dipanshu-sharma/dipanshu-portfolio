@@ -2,7 +2,7 @@
 
 > A premium, 2026-era developer portfolio. Built as a single-page editorial experience that doubles as a working artifact of the engineer behind it.
 
-**Live narrative:** A senior frontend engineer with 7+ years across enterprise scale (Cisco Webex), high-traffic e-commerce (Kaufland), and other startup environments. The site argues — through structure, type, and motion — that the author thinks like a *product-minded architect*.
+**Live narrative:** A senior full stack engineer with 8+ years across checkout and payments in high-traffic e-commerce (Kaufland), enterprise scale (Cisco Webex), and other startup environments. The site argues — through structure, type, and motion — that the author thinks like a *product-minded architect*.
 
 ---
 

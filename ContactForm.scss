@@ -1,0 +1,131 @@
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: $space-4;
+
+    &__row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: $space-4;
+    }
+
+    &__field {
+        display: flex;
+        flex-direction: column;
+        gap: $space-2;
+    }
+
+    &__label {
+        @include label-mono;
+        color: $ink-700;
+        font-size: 11px;
+
+        span {
+            color: $accent-lime;
+        }
+    }
+
+    &__input {
+        background: rgba($ink-200, 0.6);
+        border: 1px solid rgba($ink-500, 0.3);
+        border-radius: $radius-md;
+        padding: $space-3 $space-4;
+        font-size: $fs-sm;
+        color: $ink-950;
+        font-family: inherit;
+        outline: none;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        width: 100%;
+
+        &::placeholder {
+            color: $ink-600;
+        }
+
+        &:focus {
+            border-color: rgba($accent-lime, 0.5);
+            box-shadow: 0 0 0 3px rgba($accent-lime, 0.08);
+        }
+
+        &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        &--textarea {
+            resize: vertical;
+            min-height: 120px;
+            line-height: $lh-relaxed;
+        }
+    }
+
+    &__error {
+        font-size: $fs-sm;
+        color: #ff5e7a;
+        padding: $space-3 $space-4;
+        background: rgba(#ff5e7a, 0.08);
+        border: 1px solid rgba(#ff5e7a, 0.2);
+        border-radius: $radius-md;
+        margin: 0;
+    }
+
+    &__submit {
+        align-self: flex-start;
+        gap: $space-2;
+    }
+
+    &__spinner {
+        width: 14px;
+        height: 14px;
+        border: 2px solid rgba($ink-050, 0.3);
+        border-top-color: $ink-050;
+        border-radius: 50%;
+        animation: form-spin 0.7s linear infinite;
+        flex-shrink: 0;
+    }
+
+    // ── Success state ───────────────────────────────────────
+    &__success {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: $space-3;
+        padding: $space-7 $space-6;
+        border: 1px solid rgba($accent-lime, 0.25);
+        border-radius: $radius-lg;
+        background: rgba($accent-lime, 0.04);
+    }
+
+    &__success-icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: rgba($accent-lime, 0.15);
+        border: 1px solid rgba($accent-lime, 0.4);
+        color: $accent-lime;
+        font-size: 16px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__success-title {
+        @include font-display;
+        font-size: $fs-lg;
+        font-weight: 400;
+        color: $ink-950;
+        margin: 0;
+    }
+
+    &__success-sub {
+        font-size: $fs-sm;
+        color: $ink-700;
+        margin: 0;
+        line-height: $lh-relaxed;
+    }
+}
+
+@keyframes form-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

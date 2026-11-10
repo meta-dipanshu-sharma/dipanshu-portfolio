@@ -1,0 +1,198 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: $z-sticky;
+  padding: $space-3 $space-5;
+  transition: padding $dur-base $ease-out-quart;
+
+  @include bp-up(md) {
+    padding: $space-4 $space-7;
+  }
+
+  &--scrolled .nav__inner {
+    @include glass-surface(0.7);
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: $container-max;
+    margin-inline: auto;
+    padding: $space-2 $space-3 $space-2 $space-2;
+    border: 1px solid transparent;
+    border-radius: $radius-pill;
+    transition: all $dur-base $ease-out-quart;
+  }
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    padding: $space-1 $space-2;
+    border-radius: $radius-pill;
+    transition: background $dur-fast;
+
+    &:hover {
+      background: $ink-200;
+    }
+  }
+
+  &__brand-mark {
+    @include font-display;
+    font-style: italic;
+    font-size: $fs-md;
+    color: $accent-lime;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $ink-200;
+    border-radius: $radius-sm;
+    border: 1px solid $ink-300;
+    font-weight: 500;
+  }
+
+  &__brand-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1.2;
+
+    @include bp-down(md) {
+      display: none;
+    }
+  }
+
+  &__brand-name {
+    font-size: $fs-sm;
+    color: $ink-900;
+    font-weight: 500;
+  }
+
+  &__brand-role {
+    @include font-mono;
+    font-size: $fs-xxs;
+    color: $ink-600;
+    letter-spacing: $tracking-wide;
+    text-transform: uppercase;
+  }
+
+  &__links {
+    display: flex;
+    align-items: center;
+    gap: $space-1;
+
+    @include bp-down(lg) {
+      display: none;
+    }
+  }
+
+  &__link {
+    @include font-mono;
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    font-size: $fs-xs;
+    color: $ink-600;
+    padding: $space-2 $space-3;
+    border-radius: $radius-pill;
+    transition: all $dur-fast $ease-out-quart;
+    text-transform: uppercase;
+    letter-spacing: $tracking-wide;
+
+    &:hover {
+      color: $ink-900;
+      background: $ink-200;
+    }
+
+    &--active {
+      color: $ink-900;
+      background: $ink-200;
+
+      .nav__link-dot {
+        background: $accent-lime;
+        box-shadow: 0 0 8px $accent-lime-glow;
+      }
+    }
+  }
+
+  &__link-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: $ink-500;
+    transition: all $dur-fast;
+  }
+
+  &__dev-toggle {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    padding: $space-2 $space-3;
+    border: 1px solid $ink-300;
+    border-radius: $radius-pill;
+    background: $ink-100;
+    transition: all $dur-fast;
+    @include font-mono;
+    font-size: $fs-xxs;
+    color: $ink-700;
+
+    &:hover {
+      border-color: $ink-400;
+      color: $ink-900;
+    }
+
+    &--on {
+      border-color: $accent-lime;
+      background: $accent-lime-soft;
+      color: $accent-lime;
+      box-shadow: $shadow-glow;
+
+      .nav__dev-led {
+        background: $accent-lime;
+        box-shadow: 0 0 8px $accent-lime-glow;
+        animation: led-pulse 2s ease-in-out infinite;
+      }
+    }
+  }
+
+  &__dev-led {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: $ink-500;
+    transition: all $dur-fast;
+  }
+
+  &__dev-label {
+    text-transform: uppercase;
+    letter-spacing: $tracking-wide;
+
+    @include bp-down(md) {
+      display: none;
+    }
+  }
+
+  &__dev-kbd {
+    @include font-mono;
+    font-size: 9px;
+    padding: 2px 4px;
+    border: 1px solid currentColor;
+    border-radius: $radius-xs;
+    opacity: 0.6;
+
+    @include bp-down(md) {
+      display: none;
+    }
+  }
+}
+
+@keyframes led-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
